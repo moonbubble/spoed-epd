@@ -16,6 +16,16 @@ This project was generated using [Nx](https://nx.dev).
 
 [Interactive Tutorial](https://nx.dev/tutorial/01-create-application)
 
+#### Prerequisits
+- node v16, don't use a node version higher dan 16
+- angular cli
+
+#### To initialize the project, run:
+- `npm install`
+
+#### To serve the app, run:
+- `npm serve spoed` (**spoed** is the name of the app)
+
 ## Adding capabilities to your workspace
 
 Nx supports many plugins which add capabilities for developing different types of applications and different tools.
