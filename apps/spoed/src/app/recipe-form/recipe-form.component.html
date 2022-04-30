@@ -1,5 +1,5 @@
-<h1 *ngIf="isAddMode">Add Recipe</h1>
-<h1 *ngIf="!isAddMode">Edit Recipe</h1>
+<h2 *ngIf="isAddMode">VOEG EEN RECEPT TOE</h2>
+<h2 *ngIf="!isAddMode">BEWERK RECEPT</h2>
 
 <form
   (ngSubmit)="onSubmit()"
@@ -8,13 +8,13 @@
   class="recipe-form"
 >
   <mat-form-field class="recipe-form-full-width" appearance="fill">
-    <mat-label for="name">Recipe name</mat-label>
+    <mat-label for="name">Receptnaam</mat-label>
     <input
       required
       matInput
       id="name"
       formControlName="name"
-      placeholder="Recipe name"
+      placeholder="Receptnaam"
     />
     <mat-error> Name is <strong>required</strong> </mat-error>
   </mat-form-field>
@@ -23,20 +23,20 @@
     <tr>
       <td>
         <mat-form-field class="recipe-form-full-width" appearance="fill">
-          <mat-label for="amount">Amount</mat-label>
+          <mat-label for="amount">Hoeveelheid</mat-label>
           <input
             required
             matInput
             id="amount"
             formControlName="amount"
-            placeholder="Recipe amount"
+            placeholder="Hoeveelheid"
           />
           <mat-error> Amount is <strong>required</strong> </mat-error>
         </mat-form-field>
       </td>
       <td>
         <mat-form-field class="recipe-form-full-width" appearance="fill">
-          <mat-label for="unit">Unit</mat-label>
+          <mat-label for="unit">Eenheid</mat-label>
           <mat-select if="unit" formControlName="unit">
             <mat-option *ngFor="let unit of unitOptions" [value]="unit">
               {{ unit }}
@@ -49,12 +49,12 @@
 
   <p>
     <mat-form-field class="recipe-form-full-width" appearance="fill">
-      <mat-label for="description">Description</mat-label>
+      <mat-label for="description">Beschrijving</mat-label>
       <textarea
         matInput
         id="description"
         formControlName="description"
-        placeholder="Write an optional description..."
+        placeholder="Schrijf een optionele beschrijving..."
       ></textarea>
     </mat-form-field>
   </p>

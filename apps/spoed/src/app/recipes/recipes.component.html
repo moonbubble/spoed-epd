@@ -1,45 +1,55 @@
 <div class="heading">
-    <h2>RECIPES</h2>
-    <a mat-raised-button color="primary" routerLink="/new">New recipe</a>
+  <h2>RECEPTEN</h2>
+  <a mat-raised-button color="primary" routerLink="/new">Nieuw recept</a>
 </div>
-<table mat-table [dataSource]="recipes" class="mat-elevation-z8">
-
-    <!--- Note that these columns can be defined in any order.
+<table *ngIf="recipes.length else notFound" mat-table [dataSource]="recipes" class="mat-elevation-z8">
+  <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
-  
-    <!-- This is just the columns definition. On the two lines below about the <tr>'s, they are actually 'printed'. -->
-    <!-- ID Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef> Id </th>
-      <td mat-cell *matCellDef="let recipe"> {{recipe.id}} </td>
-    </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let recipe"> {{recipe.name}} </td>
-    </ng-container>
-  
-    <!-- Amount Column -->
-    <ng-container matColumnDef="amount">
-      <th mat-header-cell *matHeaderCellDef> Amount </th>
-      <td mat-cell *matCellDef="let recipe"> {{recipe.amount}} </td>
-    </ng-container>
-  
-    <!-- Unit Column -->
-    <ng-container matColumnDef="unit">
-      <th mat-header-cell *matHeaderCellDef> Unit </th>
-      <td mat-cell *matCellDef="let recipe"> {{recipe.unit}} </td>
-    </ng-container>
 
-    <!-- Action Column -->
-    <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef> Action </th>
-        <td matt-cell *matCellDef="let recipe">
-            <a mat-button color="primary" routerLink="/edit/{{recipe.id}}">Edit</a>
-        </td>
-    </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>  
+  <!-- This is just the columns definition. On the two lines below about the <tr>'s, they are actually 'printed'. -->
+  <!-- ID Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>Id</th>
+    <td mat-cell *matCellDef="let recipe">{{ recipe.id }}</td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Naam</th>
+    <td mat-cell *matCellDef="let recipe">{{ recipe.name }}</td>
+  </ng-container>
+
+  <!-- Description Column -->
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef>Beschrijving</th>
+    <td mat-cell *matCellDef="let recipe">{{ recipe.description }}</td>
+  </ng-container>
+
+  <!-- Amount Column -->
+  <ng-container matColumnDef="amount">
+    <th mat-header-cell *matHeaderCellDef>Hoeveelheid</th>
+    <td mat-cell *matCellDef="let recipe">{{ recipe.amount }}</td>
+  </ng-container>
+
+  <!-- Unit Column -->
+  <ng-container matColumnDef="unit">
+    <th mat-header-cell *matHeaderCellDef>Eenheid</th>
+    <td mat-cell *matCellDef="let recipe">{{ recipe.unit }}</td>
+  </ng-container>
+
+  <!-- Actions Column -->
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td matt-cell *matCellDef="let recipe">
+      <a mat-button color="primary" routerLink="/edit/{{ recipe.id }}">Bewerk</a>
+      <a mat-button color="warn" (click)="delete(recipe)">Delete</a>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+
+<ng-template #notFound>
+  <p>No recipes found.</p>
+</ng-template>

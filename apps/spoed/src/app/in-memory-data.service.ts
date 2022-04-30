@@ -8,16 +8,16 @@ import { Recipe } from './recipe';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const recipes = [
-      { id: 1, name: 'Hydrogen', amount: 1.0079, unit: 'stuks', description: 'blabla' },
-      { id: 2, name: 'Helium', amount: 4.0026, unit: 'gram' },
-      { id: 3, name: 'Lithium', amount: 6.941, unit: 'milliliter' },
-      { id: 4, name: 'Beryllium', amount: 9.0122, unit: 'milliliter' },
-      { id: 5, name: 'Boron', amount: 10.811, unit: 'gram' },
-      { id: 6, name: 'Carbon', amount: 12.0107, unit: 'milliliter' },
-      { id: 7, name: 'Nitrogen', amount: 14.0067, unit: 'stuks' },
-      { id: 8, name: 'Oxygen', amount: 15.9994, unit: 'stuks' },
-      { id: 9, name: 'Fluorine', amount: 18.9984, unit: 'stuks' },
-      { id: 10, name: 'Neon', amount: 20.1797, unit: 'gram' },
+      { id: 1, name: 'Hydrogen', amount: 30, unit: 'stuks', description: 'Dit gebruik je voor een zere keel' },
+      { id: 2, name: 'Helium', amount: 500, unit: 'gram' },
+      { id: 3, name: 'Lithium', amount: 20, unit: 'milliliter' },
+      { id: 4, name: 'Beryllium', amount: 115, unit: 'milliliter', description: 'Tegen hoofdpijn' },
+      { id: 5, name: 'Boron', amount: 20, unit: 'gram' },
+      { id: 6, name: 'Carbon', amount: 5, unit: 'milliliter' },
+      { id: 7, name: 'Nitrogen', amount: 15, unit: 'stuks', description: 'Ontstekingsremmend.' },
+      { id: 8, name: 'Oxygen', amount: 100, unit: 'stuks' },
+      { id: 9, name: 'Fluorine', amount: 3, unit: 'stuks' },
+      { id: 10, name: 'Neon', amount: 200, unit: 'gram' },
     ];
 
     return { recipes };
