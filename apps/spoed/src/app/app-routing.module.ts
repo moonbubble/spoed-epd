@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
   { path: 'recipes', component: RecipesComponent },
   { path: 'edit/:id', component: RecipeFormComponent },
+  { path: 'new', component: RecipeFormComponent },
 ];
 
 @NgModule({

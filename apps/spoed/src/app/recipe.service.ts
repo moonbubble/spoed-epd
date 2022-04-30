@@ -36,17 +36,25 @@ export class RecipeService {
     );
   }
 
-  /** PUT: update the hero on the server */
+  /** POST: add a new recipe to the server */
+  addRecipe(recipe: Recipe): Observable<Recipe> {
+    return this.http.post<Recipe>(this.recipesUrl, recipe, this.httpOptions).pipe(
+      tap((newRecipe: Recipe) => console.log(`added recipe w/ id=${newRecipe.id}`)),
+      catchError(this.handleError<Recipe>('addRecipe'))
+    );
+  }
+
+  /** PUT: update the recipe on the server */
   updateRecipe(recipe: Recipe): Observable<any> {
     return this.http.put(this.recipesUrl, recipe, this.httpOptions).pipe(
       tap((_) => console.log(`updated recipe id=${recipe.id}`)),
-      catchError(this.handleError<any>('updateHero'))
+      catchError(this.handleError<any>('updateRecipe'))
     );
   }
 
   handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      console.error(`${operation} faild: ${error.message}`);
+      console.error(`${operation} failed: ${error.message}`);
 
       // Let the app keep running by returning an empty result.
       return of(result as T);

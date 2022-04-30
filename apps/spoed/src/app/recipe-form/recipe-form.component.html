@@ -1,78 +1,75 @@
-<div *ngIf="recipe">
-  {{ recipe | json }}
-  <h2>Edit: {{ recipe.name }}</h2>
+<h1 *ngIf="isAddMode">Add Recipe</h1>
+<h1 *ngIf="!isAddMode">Edit Recipe</h1>
 
-  <form (ngSubmit)="save()" #recipeForm="ngForm" class="recipe-form">
+<form
+  (ngSubmit)="onSubmit()"
+  #recipeForm="ngForm"
+  [formGroup]="form"
+  class="recipe-form"
+>
+  <mat-form-field class="recipe-form-full-width" appearance="fill">
+    <mat-label for="name">Recipe name</mat-label>
+    <input
+      required
+      matInput
+      id="name"
+      formControlName="name"
+      placeholder="Recipe name"
+    />
+    <mat-error> Name is <strong>required</strong> </mat-error>
+  </mat-form-field>
+
+  <table class="recipe-form-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="recipe-form-full-width" appearance="fill">
+          <mat-label for="amount">Amount</mat-label>
+          <input
+            required
+            matInput
+            id="amount"
+            formControlName="amount"
+            placeholder="Recipe amount"
+          />
+          <mat-error> Amount is <strong>required</strong> </mat-error>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="recipe-form-full-width" appearance="fill">
+          <mat-label for="unit">Unit</mat-label>
+          <mat-select if="unit" formControlName="unit">
+            <mat-option *ngFor="let unit of unitOptions" [value]="unit">
+              {{ unit }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <p>
     <mat-form-field class="recipe-form-full-width" appearance="fill">
-      <mat-label for="name">Recipe name</mat-label>
-      <input
-        required
+      <mat-label for="description">Description</mat-label>
+      <textarea
         matInput
-        id="name"
-        name="name"
-        #name="ngModel"
-        [(ngModel)]="recipe.name"
-        placeholder="Recipe name"
-      />
-      <mat-error [hidden]="name.valid || name.pristine">
-        Name is <strong>required</strong>
-      </mat-error>
+        id="description"
+        formControlName="description"
+        placeholder="Write an optional description..."
+      ></textarea>
     </mat-form-field>
+  </p>
 
-    <table class="recipe-form-full-width" cellspacing="0">
-      <tr>
-        <td>
-          <mat-form-field class="recipe-form-full-width" appearance="fill">
-            <mat-label for="amount">Amount</mat-label>
-            <input
-              required
-              matInput
-              id="amount"
-              name="amount"
-              #amount="ngModel"
-              [(ngModel)]="recipe.amount"
-              placeholder="Recipe amount"
-            />
-            <mat-error [hidden]="name.valid || name.pristine">
-              Amount is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field class="recipe-form-full-width" appearance="fill">
-            <mat-label for="unit">Unit</mat-label>
-            <mat-select if="unit" [(ngModel)]="recipe.unit" name="unit">
-              <mat-option *ngFor="let unit of unitOptions" [value]="unit">
-                {{ unit }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </td>
-      </tr>
-    </table>
-
-    <p>
-      <mat-form-field class="recipe-form-full-width" appearance="fill">
-        <mat-label for="description">Description</mat-label>
-        <textarea
-          matInput
-          id="description"
-          name="description"
-          [(ngModel)]="recipe.description"
-          placeholder="Write an optional description..."
-        ></textarea>
-      </mat-form-field>
-    </p>
-
-    <div class="button-group">
-      <button mat-button color="primary" type="button" (click)="goBack()">
-        Cancel
-      </button>
-      <button type="submit" mat-raised-button color="primary" [disabled]="!recipeForm.form.valid">
-        Save
-      </button>
-    </div>
-  </form>
-</div>
-
-
+  <div class="button-group">
+    <button mat-button color="primary" type="button" (click)="goBack()">
+      Cancel
+    </button>
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary"
+      [disabled]="!recipeForm.form.valid"
+    >
+      Save
+    </button>
+  </div>
+</form>
