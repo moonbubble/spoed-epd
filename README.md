@@ -1,5 +1,3 @@
-
-
 # SpoedEpdUseCase
 
 This project was generated using [Nx](https://nx.dev).
@@ -18,13 +16,13 @@ This project was generated using [Nx](https://nx.dev).
 
 #### Prerequisits
 - node v16, don't use a node version higher dan 16
-- angular cli
 
 #### To initialize the project, run:
 - `npm install`
+- Be sure to have angular cli installed (` npm install -g @angular/cli@latest`)
 
 #### To serve the app, run:
-- `npm serve spoed` (**spoed** is the name of the app)
+- `ng serve spoed` (**spoed** is the name of the app)
 
 ## Adding capabilities to your workspace
 
@@ -67,25 +65,29 @@ Libraries are shareable across libraries and applications. They can be imported 
 
 ## Development server
 
-Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+Run `ng serve spoed` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
-Run `ng g component my-component --project=my-app` to generate a new component.
+Run `ng g component my-component --project=spoed` to generate a new component.
+
+## Generating services
+
+Run `ng g service my-service --project=spoed` to generate a new service.
 
 ## Build
 
-Run `ng build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `ng build spoed` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
 ## Running unit tests
 
-Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
+Run `ng test spoed` to execute the unit tests via [Jest](https://jestjs.io).
 
 Run `nx affected:test` to execute the unit tests affected by a change.
 
 ## Running end-to-end tests
 
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
+Run `ng e2e spoed` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
 
 Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
 

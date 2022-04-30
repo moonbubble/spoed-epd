@@ -1,18 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RecipeService } from '../recipe.service';
 import { Recipe } from '../recipe';
-
-const RECIPE_DATA: Recipe[] = [
-  { id: 1, name: 'Hydrogen', amount: 1.0079, unit: 'stuks' },
-  { id: 2, name: 'Helium', amount: 4.0026, unit: 'gram' },
-  { id: 3, name: 'Lithium', amount: 6.941, unit: 'milliliter' },
-  { id: 4, name: 'Beryllium', amount: 9.0122, unit: 'milliliter' },
-  { id: 5, name: 'Boron', amount: 10.811, unit: 'gram' },
-  { id: 6, name: 'Carbon', amount: 12.0107, unit: 'milliliter' },
-  { id: 7, name: 'Nitrogen', amount: 14.0067, unit: 'stuks' },
-  { id: 8, name: 'Oxygen', amount: 15.9994, unit: 'stuks' },
-  { id: 9, name: 'Fluorine', amount: 18.9984, unit: 'stuks' },
-  { id: 10, name: 'Neon', amount: 20.1797, unit: 'gram' },
-];
 
 @Component({
   selector: 'spoed-epd-use-case-recipes',
@@ -21,9 +9,22 @@ const RECIPE_DATA: Recipe[] = [
 })
 export class RecipesComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'amount', 'unit', 'action'];
-  recipes = RECIPE_DATA;
+  recipes: Recipe[] = [];
 
-  constructor() {}
+  constructor(private recipeService: RecipeService) {
+    // Reserve the constructor for minimal initialization such as wiring constructor parameters to properties. 
+    // The constructor shouldn't do anything. 
+    // It certainly shouldn't call a function that makes HTTP requests to a remote server as a real data service would.
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getRecipes();
+  }
+
+  getRecipes(): void {
+    // This code waits for the Observable to emit the aary of recipes
+    // The subscribe() method passes the emitted array to the callback, which sets the component's recipes property
+    // This asynchronous approach will work when the RecipeService requests recipes from the server.
+    this.recipeService.getRecipes().subscribe(recipes => this.recipes = recipes);
+  }
 }

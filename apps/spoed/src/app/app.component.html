@@ -1,4 +1,6 @@
-<!-- Dit is pure html -->
-
 <h1>{{title}}</h1>
-<spoed-epd-use-case-recipes></spoed-epd-use-case-recipes>
+<nav>
+    <!-- routerLink is one of the public directives in the RouterModule -->
+    <a mat-stroked-button color="primary" routerLink="/recipes">Recipes</a>
+</nav>
+<router-outlet></router-outlet>

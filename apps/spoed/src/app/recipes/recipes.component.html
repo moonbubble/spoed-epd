@@ -11,32 +11,32 @@
     <!-- ID Column -->
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> Id </th>
-      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      <td mat-cell *matCellDef="let recipe"> {{recipe.id}} </td>
     </ng-container>
   
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      <td mat-cell *matCellDef="let recipe"> {{recipe.name}} </td>
     </ng-container>
   
     <!-- Amount Column -->
     <ng-container matColumnDef="amount">
       <th mat-header-cell *matHeaderCellDef> Amount </th>
-      <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+      <td mat-cell *matCellDef="let recipe"> {{recipe.amount}} </td>
     </ng-container>
   
     <!-- Unit Column -->
     <ng-container matColumnDef="unit">
       <th mat-header-cell *matHeaderCellDef> Unit </th>
-      <td mat-cell *matCellDef="let element"> {{element.unit}} </td>
+      <td mat-cell *matCellDef="let recipe"> {{recipe.unit}} </td>
     </ng-container>
 
     <!-- Action Column -->
     <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef> Action </th>
-        <td matt-cell *matCellDef="let element">
-            <a mat-button color="primary" href="https://www.google.com/" target="_blank">Edit</a>
+        <td matt-cell *matCellDef="let recipe">
+            <a mat-button color="primary" routerLink="/edit/{{recipe.id}}">Edit</a>
         </td>
     </ng-container>
   

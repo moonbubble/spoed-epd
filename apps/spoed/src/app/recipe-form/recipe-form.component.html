@@ -1,1 +1,12 @@
-<p>recipe-form works!</p>
+<p>recipe form component works!</p>
+
+<div *ngIf="recipe">
+  <h2>Edit {{ recipe.name }}</h2>
+  <div>
+    <label for="name">Recipe name: </label>
+    <!-- ngModel is two way binding syntax. Here it binds to the recipe.name prop to the HTML textbox -->
+    <input id="name" [(ngModel)]="recipe.name" placeholder="name" />
+  </div>
+</div>
+
+<button mat-button color="primary" type="button" (click)="goBack()">Cancel</button>
