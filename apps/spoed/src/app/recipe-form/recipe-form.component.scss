@@ -1,0 +1,17 @@
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.recipe-form-full-width {
+  width: 100%;
+}
+
+td:not(:last-child) {
+  padding-right: 8px;
+}
+
+.button-group button {
+  margin-right: 8px;
+}

@@ -18,7 +18,7 @@
             "tsConfig": "apps/spoed/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": ["apps/spoed/src/favicon.ico", "apps/spoed/src/assets"],
-            "styles": ["./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css", "apps/spoed/src/styles.scss"],
+            "styles": ["./node_modules/@angular/material/prebuilt-themes/indigo-pink.css", "apps/spoed/src/styles.scss"],
             "scripts": []
           },
           "configurations": {

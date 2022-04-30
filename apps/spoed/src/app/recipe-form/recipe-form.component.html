@@ -1,12 +1,78 @@
-<p>recipe form component works!</p>
-
 <div *ngIf="recipe">
-  <h2>Edit {{ recipe.name }}</h2>
-  <div>
-    <label for="name">Recipe name: </label>
-    <!-- ngModel is two way binding syntax. Here it binds to the recipe.name prop to the HTML textbox -->
-    <input id="name" [(ngModel)]="recipe.name" placeholder="name" />
-  </div>
+  {{ recipe | json }}
+  <h2>Edit: {{ recipe.name }}</h2>
+
+  <form (ngSubmit)="save()" #recipeForm="ngForm" class="recipe-form">
+    <mat-form-field class="recipe-form-full-width" appearance="fill">
+      <mat-label for="name">Recipe name</mat-label>
+      <input
+        required
+        matInput
+        id="name"
+        name="name"
+        #name="ngModel"
+        [(ngModel)]="recipe.name"
+        placeholder="Recipe name"
+      />
+      <mat-error [hidden]="name.valid || name.pristine">
+        Name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <table class="recipe-form-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="recipe-form-full-width" appearance="fill">
+            <mat-label for="amount">Amount</mat-label>
+            <input
+              required
+              matInput
+              id="amount"
+              name="amount"
+              #amount="ngModel"
+              [(ngModel)]="recipe.amount"
+              placeholder="Recipe amount"
+            />
+            <mat-error [hidden]="name.valid || name.pristine">
+              Amount is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="recipe-form-full-width" appearance="fill">
+            <mat-label for="unit">Unit</mat-label>
+            <mat-select if="unit" [(ngModel)]="recipe.unit" name="unit">
+              <mat-option *ngFor="let unit of unitOptions" [value]="unit">
+                {{ unit }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <p>
+      <mat-form-field class="recipe-form-full-width" appearance="fill">
+        <mat-label for="description">Description</mat-label>
+        <textarea
+          matInput
+          id="description"
+          name="description"
+          [(ngModel)]="recipe.description"
+          placeholder="Write an optional description..."
+        ></textarea>
+      </mat-form-field>
+    </p>
+
+    <div class="button-group">
+      <button mat-button color="primary" type="button" (click)="goBack()">
+        Cancel
+      </button>
+      <button type="submit" mat-raised-button color="primary" [disabled]="!recipeForm.form.valid">
+        Save
+      </button>
+    </div>
+  </form>
 </div>
 
-<button mat-button color="primary" type="button" (click)="goBack()">Cancel</button>
+

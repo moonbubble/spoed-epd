@@ -13,6 +13,7 @@ import { RecipeService } from '../recipe.service';
 })
 export class RecipeFormComponent implements OnInit {
   @Input() recipe?: Recipe;
+  unitOptions = ['stuks', 'gram', 'milliliter'];
 
   constructor(
     private route: ActivatedRoute,
@@ -26,7 +27,17 @@ export class RecipeFormComponent implements OnInit {
 
   getRecipe(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.recipeService.getRecipe(id).subscribe(recipe => this.recipe = recipe);
+    this.recipeService
+      .getRecipe(id)
+      .subscribe((recipe) => (this.recipe = recipe));
+  }
+
+  save(): void {
+    if (this.recipe) {
+      this.recipeService
+        .updateRecipe(this.recipe)
+        .subscribe(() => this.goBack());
+    }
   }
 
   goBack(): void {
