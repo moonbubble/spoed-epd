@@ -44,6 +44,8 @@ export class RecipeFormComponent implements OnInit {
   }
 
   getRecipe(id: number): void {
+    // TODO: If recipeService throws an error (f.e. when the id doesn't exist),
+    // give a 404, or redirect to the recipes overview
     this.recipeService
       .getRecipe(id)
       .subscribe((recipe) => this.form.patchValue(recipe));

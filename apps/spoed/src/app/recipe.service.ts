@@ -9,6 +9,7 @@ import { catchError, tap } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class RecipeService {
+  // In InMemoryDataService you see the const recipes, which results in the url 'api/recipes'
   private recipesUrl = 'api/recipes';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -65,7 +66,6 @@ export class RecipeService {
     return (error: any): Observable<T> => {
       console.error(`${operation} failed: ${error.message}`);
 
-      // Let the app keep running by returning an empty result.
       return of(result as T);
     };
   }
